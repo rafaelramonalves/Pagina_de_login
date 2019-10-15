@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+//Biblioteca para verificar o tamanho da tela
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+
+
 class FormCard extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return new Container(
       width: double.infinity,
-      height: ScreenUtil.getInstance().setHeight(550),
+      height: ScreenUtil.getInstance().setHeight(600),
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(8.0),
@@ -29,17 +33,17 @@ class FormCard extends StatelessWidget {
                 style: TextStyle(
                     fontSize: ScreenUtil.getInstance().setSp(45),
                     fontFamily: "Poppins-Bold",
-                    letterSpacing: .6)),
+                    letterSpacing: .6,color: Colors.red[700])),
             SizedBox(
               height: ScreenUtil.getInstance().setHeight(30),
             ),
-            Text("usuário",
+            Text("Usuário",
                 style: TextStyle(
                     fontFamily: "Poppins-Medium",
-                    fontSize: ScreenUtil.getInstance().setSp(26))),
+                    fontSize: ScreenUtil.getInstance().setSp(26),color: Colors.red[700])),
             TextField(
               decoration: InputDecoration(
-                  hintText: "usuário",
+                  hintText: "Usuário",
                   hintStyle: TextStyle(color: Colors.grey, fontSize: 12.0)),
             ),
             SizedBox(
@@ -48,7 +52,7 @@ class FormCard extends StatelessWidget {
             Text("Senha",
                 style: TextStyle(
                     fontFamily: "Poppins-Medium",
-                    fontSize: ScreenUtil.getInstance().setSp(26))),
+                    fontSize: ScreenUtil.getInstance().setSp(26),color: Colors.red[700])),
             TextField(
               obscureText: true,
               decoration: InputDecoration(
@@ -58,21 +62,67 @@ class FormCard extends StatelessWidget {
             SizedBox(
               height: ScreenUtil.getInstance().setHeight(35),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: <Widget>[
-                Text(
-                  "Esqueceu a senha?",
-                  style: TextStyle(
-                      color: Colors.blue,
-                      fontFamily: "Poppins-Medium",
-                      fontSize: ScreenUtil.getInstance().setSp(28)),
-                )
-              ],
-            )
+           Row(
+             children: <Widget>[
+               InkWell(
+                 child: Container(
+                   width: ScreenUtil.getInstance().setWidth(580),
+                   height: ScreenUtil.getInstance().setHeight(100),
+                   child: Material(
+                     color: Colors.red[700],
+                     borderRadius: BorderRadius.circular(100),
+                     child: InkWell(
+                       onTap: () {},
+                       child: Center(
+                         child: Text("Entrar",
+                             style: TextStyle(
+                                 color: Colors.white,
+                                 fontFamily: "Poppins-Bold",
+                                 fontSize: 18,
+                                 letterSpacing: 1.0)),
+                       ),
+                     ),
+                   ),
+                 ),
+               ),
+             ],
+           ),
+           Padding(
+             padding: EdgeInsets.all(10),
+              child:  Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Text(
+                    "Esqueceu a senha?",
+                    style: TextStyle(
+                        color: Colors.red[700],
+                        fontFamily: "Poppins-Medium",
+                        fontSize: ScreenUtil.getInstance().setSp(28)),
+                  )
+                ],
+              ),
+           )
           ],
         ),
       ),
     );
   }
+
+  //Função de "lembrar usuário"
+  Widget checkButton(bool isSelected) => Container(
+    width: 16.0,
+    height: 16.0,
+    padding: EdgeInsets.all(2.0),
+    decoration: BoxDecoration(
+        shape: BoxShape.rectangle,
+        border: Border.all(width: 2.0, color: Colors.black)),
+    child: isSelected
+        ? Container(
+      width: double.infinity,
+      height: double.infinity,
+      decoration:
+      BoxDecoration(shape: BoxShape.rectangle, color: Colors.black),
+    )
+        : Container(),
+  );
 }

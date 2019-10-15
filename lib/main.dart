@@ -18,25 +18,28 @@ class _MyAppState extends State<MyApp> {
 
   bool _isSelected = false; //Variável de seleção do "lembrar usuário"
 
-  void _radio() {
+  //Função para atualizar a tela com a chebox marcada ou não (lembrar usuario)
+  void _checkBoxLembrarUsuario() {
     setState(() {
       _isSelected = !_isSelected;
     });
   }
 
-  Widget radioButton(bool isSelected) => Container(
+
+  //Função de "lembrar usuário"
+  Widget checkButton(bool isSelected) => Container(
         width: 16.0,
         height: 16.0,
         padding: EdgeInsets.all(2.0),
         decoration: BoxDecoration(
-            shape: BoxShape.circle,
+            shape: BoxShape.rectangle,
             border: Border.all(width: 2.0, color: Colors.black)),
         child: isSelected
             ? Container(
                 width: double.infinity,
                 height: double.infinity,
                 decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: Colors.black),
+                    BoxDecoration(shape: BoxShape.rectangle, color: Colors.black),
               )
             : Container(),
       );
@@ -97,8 +100,8 @@ class _MyAppState extends State<MyApp> {
                             width: 12.0,
                           ),
                           GestureDetector(
-                            onTap: _radio,
-                            child: radioButton(_isSelected),
+                            onTap: _checkBoxLembrarUsuario,
+                            child: checkButton(_isSelected),
                           ),
                           SizedBox(
                             width: 8.0,
@@ -108,7 +111,7 @@ class _MyAppState extends State<MyApp> {
                                   fontSize: 12, fontFamily: "Poppins-Medium"))
                         ],
                       ),
-                      InkWell(
+                      /*InkWell( //Uma área retangular de um material que responde ao toque.
                         child: Container(
                           width: ScreenUtil.getInstance().setWidth(330),
                           height: ScreenUtil.getInstance().setHeight(100),
@@ -139,7 +142,7 @@ class _MyAppState extends State<MyApp> {
                             ),
                           ),
                         ),
-                      )
+                      )*/
                     ],
                   ),
                   SizedBox(
@@ -149,7 +152,7 @@ class _MyAppState extends State<MyApp> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       horizontalLine(),
-                      Text("Rede Social",
+                      Text("Redes Sociais",
                           style: TextStyle(
                               fontSize: 16.0, fontFamily: "Poppins-Medium")),
                       horizontalLine()
